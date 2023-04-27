@@ -1,20 +1,56 @@
-PROCEDURE dot_product (parameters)
 
+PROCEDURE dot_product_p(v1, v2)
 VAR
-    v1 : ARRAY_OF float[length];
-    v2 : ARRAY_OF float[length];
-    ps : ARRAY_OF float[length];
+    ps : FLOAT;                          //a scalar value representing the dot product of the two vectors
+    isOrthogonal := True;          //Initialize a variable called "isOrthogonal" to True
 BEGIN
-FOR i FROM 0 TO length STEP i=i+1  DO
-    FOR j FROM 0 TO length STEP j=j+1  DO
-        ps [k]= v1[i]*v2[j];
+    ps[i]=v1[i]*v2[i];
+    IF (ps <> 0) THEN
+        isOrthogonal= False;
+    END_IF
+END
+
+ALGORITHM Check Orthogonality using Dot Product Procedure
+VAR
+    n : INTEGER;                          //the number of vector pairs to check
+    v1 , v2 : ARRAY_OF float[n];          //arrays of size n, containing the vectors to check for orthogonality
+BEGIN
+    dot_product_p (v1[i],v2[i]);
+    
+    IF (isOrthogonal=True) THEN
+        write("this pair of vectors is orthogonal")       //A message indicating whether each pair of vectors is orthogonal or not
+    ELSE
+       write("this pair of vectors are not orthogonal")       //A message indicating whether each pair of vectors is orthogonal or not
+    END_IF
+END 
+
+
+
+FUNCTION dot_product_f (v1,v2) : FLOAT
+VAR
+     v1 , v2 : ARRAY_OF float[n];          //arrays of size n, containing the vectors to check for orthogonality
+     ps := 0;                          //a scalar value representing the dot product of the two vectors
+BEGIN
+    FOR i FROM 1 TO n  DO
+        ps [i]= ps + v1[i]*v2[i];
     END_FOR
-END_FOR
+    RETURN ps ;
 END
 
-ALGORITHM ORT_OR_NOT
+ALGORITHM Check Orthogonality using Dot Product Function
 VAR
-    v1 : 
+    n : INTEGER;                          //the number of vector pairs to check
+    v1 , v2 : ARRAY_OF float[n];          //arrays of size n, containing the vectors to check for orthogonality
 BEGIN
-    set_instructions
+   FOR i FROM 1 TO n DO
+    dot_product_f (v1[i],v2[i]);
+   END_FOR
+   IF (ps=0) THEN
+    write("This pairs of vectors are orthogonal")
+   ELSE
+    write("This pairs of vectors are not orthogonal")
+   END_IF
 END
+
+
+
