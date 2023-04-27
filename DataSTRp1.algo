@@ -1,0 +1,22 @@
+ALGORITHM SUMOFDISTINCT
+VAR
+    sum = 0;
+    set_1 : ARRAY_OF INTEGER[length];
+    set_2 : ARRAY_OF INTEGER[length];
+
+BEGIN
+    FOR i FROM 0 TO length STEP i++  DO
+        FOR j FROM 0 TO length STEP j++  DO
+            IF (set_1[i] <> set_2[j]) THEN
+                sum := sum + set_1[i];
+            END_IF
+
+            IF (set_2[i] <> set_1[j]) THEN
+                sum := sum + set_2[i];
+            END_IF
+        END_FOR
+        
+    END_FOR
+
+    write("the sum of distictif emelement is:";sum)
+END

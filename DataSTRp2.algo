@@ -1,0 +1,20 @@
+PROCEDURE dot_product (parameters)
+
+VAR
+    v1 : ARRAY_OF float[length];
+    v2 : ARRAY_OF float[length];
+    ps : ARRAY_OF float[length];
+BEGIN
+FOR i FROM 0 TO length STEP i=i+1  DO
+    FOR j FROM 0 TO length STEP j=j+1  DO
+        ps [k]= v1[i]*v2[j];
+    END_FOR
+END_FOR
+END
+
+ALGORITHM ORT_OR_NOT
+VAR
+    v1 : 
+BEGIN
+    set_instructions
+END
